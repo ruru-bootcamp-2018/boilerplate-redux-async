@@ -1,25 +1,37 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchPosts } from '../actions'
+import { fetchPosts, redditSearch } from '../actions'
 
-const LoadSubreddit = ({ dispatch }) => {
+class LoadSubreddit extends Component {
 
-  console.log(dispatch)
+  constructor(props) {
+    super(props)
 
-  function handleChange(e) {
-    //console.log(e.target.value)
-    let somevariable = e.target.value;
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  return (
-    <React.Fragment>
-      <input type="text" name="subreddit" onChange={handleChange} />
+  componentDidMount() {
+    console.log(this.props)
+  }
 
-      <button onClick={() => dispatch(fetchPosts(somevariable))}>
-        Fetch Posts
-      </button>
-    </React.Fragment>
-  )
+  handleChange(e) {
+    this.props.dispatch(redditSearch(e.target.value))
+  }
+
+  render() {
+
+    return (
+      <React.Fragment>
+        <input type="text" name="subreddit" onChange={this.handleChange} />
+
+        <button onClick={() => this.props.dispatch(fetchPosts(this.props.redditSearch))}>
+          Fetch Posts
+        </button>
+      </React.Fragment >
+    )
+  }
 }
 
-export default connect()(LoadSubreddit)
+const MapStateToProps = state => state
+
+export default connect(MapStateToProps)(LoadSubreddit)

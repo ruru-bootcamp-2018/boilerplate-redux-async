@@ -12,6 +12,8 @@ const Subreddit = ({subreddits}) => {
         key={i}
         title={post.title} 
         date={post.created}
+        url={post.permalink}
+        thumbnail={post.thumbnail || null}
       />
     )}
   </div>

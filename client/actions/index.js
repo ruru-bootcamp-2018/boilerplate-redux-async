@@ -26,7 +26,6 @@ export const showError = (errorMessage) => {
 
 export function fetchPosts (subreddit) {
   return (dispatch) => {
-    console.log(dispatch)
     dispatch(requestPosts())
     return request
       .get(`/api/v1/reddit/subreddit/${subreddit}`)
@@ -38,3 +37,12 @@ export function fetchPosts (subreddit) {
       })
   }// return
 } //fetchposts
+
+export function redditSearch(subreddit) {
+
+  return {
+    type: 'SEARCH_SUBREDDIT',
+    subreddit
+  }
+
+}
