@@ -46,3 +46,12 @@ export function redditSearch(subreddit) {
   }
 
 }
+
+export function sortPosts(posts) {
+
+  return {
+    type: 'SORT_POSTS',
+    
+  }
+
+}

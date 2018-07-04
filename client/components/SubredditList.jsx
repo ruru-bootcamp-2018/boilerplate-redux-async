@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import Post from './Post'
 
 const Subreddit = ({subreddits}) => {
-  console.log(subreddits);
+  console.log(subreddits)
+
   return (
   <div>
     {subreddits.map((post, i) =>
